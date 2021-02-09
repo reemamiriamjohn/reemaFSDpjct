@@ -1,0 +1,57 @@
+<li class="nav-item">
+    <!-- <a class="nav-link" routerLink="/add">Add Product</a> -->
+   
+   
+    <a class="nav-link" style="cursor:pointer"  *ngIf="_auth.loggedIn()" (click)="_auth.logoutUser()">Logout</a>
+    </li>
+  <div class="card">
+    <div class="card-header">
+        <b>{{title}}</b>
+        <button  class="btn btn-warning" routerLink="/add2">Add Product</button>
+        <!-- <button  class="btn btn-link" routerLink="/list2">BPL LIST</button> -->
+        <button  class="btn btn-link" routerLink="/list">APL LIST</button>
+    </div>
+     
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                  <tr>
+                   
+                    <th scope="col">Product No</th>
+                    <th scope="col">ProductName</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Price</th>
+                    
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor='let product of products'>  
+                      <!-- <td>
+                        <img *ngIf='showImage' 
+                       [src] = 'product.imageUrl'
+                        [title]  = 'product.productName'
+                        [style.width.px]  = 'imageWidth'
+                        [style.margin.px]  = 'imageMargin'>
+                    </td> -->
+                     
+                      <td>{{ product.productNo2 }}</td>
+                      <td>{{ product.productName2 }}</td>
+                      <td>{{ product.productCode2 }}</td>
+                      <td>{{ product.price2 }}</td>
+                      <td>   
+                        <button *ngIf="_auth.loggedInAdmin()" class="btn btn-danger" (click)= "ondlt2(product)" style="margin-right: 16px">Delete</button>
+                        <button *ngIf="_auth.loggedInAdmin()" class="btn btn-primary" (click)="onedit2(product)">Update</button>
+                       </td>
+                     </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  

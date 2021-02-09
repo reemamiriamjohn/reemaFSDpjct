@@ -1,0 +1,37 @@
+<div class="card-header">
+    <h3>LOGIN</h3>
+</div>
+
+<div class="card-body">
+    <form class="form col-md-6" #userlogin="ngForm" (ngSubmit)="userVerify()">
+        <div class="form-group">
+            <div class="form-group">
+                <label for="id">User id</label>
+                <input type="text" class="form-control" placeholder="10-Digit RationCard Number" [(ngModel)]="userVerifyData.id" name="id"  #id="ngModel"  pattern="^[1-9]{1}[0-9]{9}" required>
+                <small class="text-danger" [class.d-none]="id.valid || id.touched">Enter the valid id</small>
+            </div>
+        </div>
+
+        <br>
+        <div class="form-group">
+            <label for="password">password</label>
+            <input type="password" class="form-control" [(ngModel)]="userVerifyData.password"  #password="ngModel" [class.is-invalid]="password.invalid && password.touched" name="Userpassword" minlength="6" required/>
+            
+        </div>
+        <br>
+
+        <!-- <div class="form-group">
+            <label for="Income">Income</label>
+            <input type="text "class="form-control" [(ngModel)]="userVerifyData.incum" name="incum"  #incum="ngModel" [class.is-invalid]="incum.invalid && incum.touched" pattern="[1-9]{1,100000}" required>
+        </div> -->
+        
+        <div class="box">
+        <button class="btn btn-primary" [disabled]="userlogin.form.invalid">Submit</button>
+        </div>
+        <div class= "space">
+        <p><b>Don't have an account</b></p>
+        <a class="nav-link" routerLink="/sign">Sign In</a>
+        </div>
+    </form>
+
+</div>

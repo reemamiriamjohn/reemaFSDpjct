@@ -1,0 +1,37 @@
+<div class="card-header">
+    <h3>SIGN IN</h3>
+</div>
+<div class="card-body">
+    <form class="form col-md-6" #userlogin="ngForm" (ngSubmit)="userVerifys()">
+        <div class="form-group">
+            <label for="id">User id</label>
+            <input type="text" class="form-control" placeholder="10-Digit RationCard Number" [(ngModel)]="userVerifyData.id" name="id"  #id="ngModel"  pattern="^[1-9]{1}[0-9]{9}" required>
+            <small class="text-danger" [class.d-none]="id.valid || id.touched">Enter the valid id</small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="password">password</label>
+            <input type="password" class="form-control" [(ngModel)]="userVerifyData.password"  #password="ngModel" [class.is-invalid]="password.invalid && password.touched" name="Userpassword" minlength="6" required/>
+            
+        </div>
+        <br>
+        <div class="form-group"> 
+            <label for="name">Name</label>
+            <input type="text" class="form-control" [(ngModel)]="userVerifyData.name" name="name"  #name="ngModel"  [class.is-invalid]="name.invalid && name.touched" pattern="^[A-Za-z]{4,18}" required>
+        </div>
+        <br>
+        <div class="form-group"> 
+            <label for="email">Email</label>
+            <input type="email"class="form-control" [(ngModel)]="userVerifyData.email" name="email"  #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}" required>
+        </div>
+        <div class="form-group">
+            <label for="Mobile">Mobile</label>
+            <input type="text "class="form-control" [(ngModel)]="userVerifyData.mob" name="mob"  #mob="ngModel" [class.is-invalid]="mob.invalid && mob.touched" pattern="[1-9]{1}[0-9]{9}" required>
+        </div>
+        <div class="form-group">
+            <label for="Income">Income</label>
+            <input type="text "class="form-control" [(ngModel)]="userVerifyData.incum" name="incum"  #incum="ngModel" [class.is-invalid]="incum.invalid && incum.touched" pattern="[1-9]{1,100000}" required>
+        </div>
+        <button (click)="userVerifys()" type="button" class="btn btn-primary" [disabled]="userlogin.form.invalid">Submit</button>
+    </form>
+</div>
